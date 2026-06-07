@@ -5,7 +5,11 @@
 const fs = require("fs");
 const path = require("path");
 
-const FILE = path.join(__dirname, "data", "users.json");
+const DIR = path.join(__dirname, "data");
+const FILE = path.join(DIR, "users.json");
+
+// Ensure data directory exists on startup
+if (!fs.existsSync(DIR)) fs.mkdirSync(DIR, { recursive: true });
 
 function load() {
   try {
